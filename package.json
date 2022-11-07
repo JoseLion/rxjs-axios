@@ -1,0 +1,41 @@
+{
+  "name": "rxjs-axios",
+  "version": "0.0.0",
+  "description": "A complete Axios wrapper that uses RxJS observables",
+  "author": "Jose Luis Leon <joseluis5000l@gmail.com>",
+  "private": true,
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.prod.json",
+    "compile": "tsc",
+    "lint": "tslint -p tsconfig.json -c tslint.json \"**/*.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "axios": "^1.1.3",
+    "rxjs": "^7.5.7",
+    "tslint": "^6.1.3",
+    "typescript": "^4.8.4"
+  },
+  "peerDependencies": {
+    "axios": "~1.1.3",
+    "rxjs": "~7.5.7"
+  },
+  "peerDependenciesMeta": {
+    "axios": {
+      "optional": false
+    },
+    "rxjs": {
+      "optional": false
+    }
+  },
+  "packageManager": "yarn@3.2.4"
+}
