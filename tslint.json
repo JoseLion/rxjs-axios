@@ -1,0 +1,66 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "rules": {
+    "align": [true, "statements"],
+    "array-type": false,
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "deprecation": true,
+    "eofline": true,
+    "indent": [true, "spaces", 2],
+    "interface-name": false,
+    "linebreak-style": [true, "LF"],
+    "max-line-length": [true, 120],
+    "member-access": [true, "check-constructor"],
+    "no-console": true,
+    "no-duplicate-imports": true,
+    "no-namespace": false,
+    "no-trailing-whitespace": true,
+    "no-unbound-method": false,
+    "no-unused-expression": false,
+    "only-arrow-functions": false,
+    "object-literal-sort-keys": true,
+    "ordered-imports": [
+      true,
+      { "grouped-imports": true }
+    ],
+    "quotemark": [true, "double", "avoid-escape", "avoid-template"],
+    "semicolon": true,
+    "whitespace": [
+      true, 
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-rest-spread",
+      "check-type",
+      "check-typecast",
+      "check-type-operator",
+      "check-preblock"
+    ],
+    "trailing-comma": [true, {
+      "singleline": "never",
+      "multiline": {
+        "arrays": "always",
+        "objects": "always",
+        "functions": "always",
+        "imports": "always",
+        "exports": "always",
+        "typeLiterals": "always"
+      },
+      "esSpecCompliant": true
+    }],
+    "variable-name": [true, "allow-pascal-case", "allow-leading-underscore"]
+  },
+  "linterOptions": {
+    "exclude": [
+      ".yarn/**/*",
+      "build/**/*",
+      "dist/**/*",
+      "node_modules/**/*"
+    ]
+  }
+}
