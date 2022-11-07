@@ -15,13 +15,22 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.prod.json",
+    "check": "yarn compile && yarn lint && yarn test",
     "compile": "tsc",
-    "lint": "tslint -p tsconfig.json -c tslint.json \"**/*.ts\""
+    "lint": "tslint -p tsconfig.json -c tslint.json \"**/*.ts\"",
+    "test": "NODE_ENV=test mocha"
   },
   "devDependencies": {
+    "@stackbuilders/assertive-ts": "^1.2.0",
+    "@types/mocha": "^10.0.0",
     "@types/node": "^18.11.9",
+    "@types/sinon": "^10.0.13",
     "axios": "^1.1.3",
+    "mocha": "^10.1.0",
+    "msw": "^0.47.4",
     "rxjs": "^7.5.7",
+    "sinon": "^14.0.1",
+    "ts-node": "^10.9.1",
     "tslint": "^6.1.3",
     "typescript": "^4.8.4"
   },
