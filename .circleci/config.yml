@@ -74,7 +74,7 @@ jobs:
           command: yarn add --dev rxjs@^<< parameters.rxjs >>
 
       - run:
-          name: Install Axios v<< parameters.rxjs >>
+          name: Install Axios v<< parameters.axios >>
           command: yarn add --dev axios@^<< parameters.axios >>
 
       - run:
