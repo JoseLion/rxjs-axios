@@ -1,6 +1,6 @@
 import { expect, TypeFactories } from "@stackbuilders/assertive-ts";
 import otherAxios from "axios";
-import { finalize, Observable } from "rxjs";
+import { Observable } from "rxjs";
 import Sinon from "sinon";
 
 import { axios } from "../../src";
@@ -106,12 +106,13 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     context("when the observable is unsubscribed", () => {
       it("cancels the request", done => {
         const subscription = axios.request({ method: "GET", url: "http://localhost:8080/users" })
-          .pipe(finalize(() => done()))
           .subscribe(response => {
             expect(response).not.toBePresent();
+            done();
           });
 
         subscription.unsubscribe();
+        done();
       });
     });
   });
@@ -140,12 +141,13 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     context("when the observable is unsubscribed", () => {
       it("cancels the request", done => {
         const subscription = axios.get("http://localhost:8080/users")
-          .pipe(finalize(() => done()))
           .subscribe(response => {
             expect(response).not.toBePresent();
+            done();
           });
 
         subscription.unsubscribe();
+        done();
       });
     });
   });
@@ -170,12 +172,13 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     context("when the observable is unsubscribed", () => {
       it("cancels the request", done => {
         const subscription = axios.delete("http://localhost:8080/user/1")
-          .pipe(finalize(() => done()))
           .subscribe(response => {
             expect(response).not.toBePresent();
+            done();
           });
 
         subscription.unsubscribe();
+        done();
       });
     });
   });
@@ -203,12 +206,13 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     context("when the observable is unsubscribed", () => {
       it("cancels the request", done => {
         const subscription = axios.head("http://localhost:8080/user/1")
-          .pipe(finalize(() => done()))
           .subscribe(response => {
             expect(response).not.toBePresent();
+            done();
           });
 
         subscription.unsubscribe();
+        done();
       });
     });
   });
@@ -237,12 +241,13 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     context("when the observable is unsubscribed", () => {
       it("cancels the request", done => {
         const subscription = axios.options("http://localhost:8080")
-          .pipe(finalize(() => done()))
           .subscribe(response => {
             expect(response).not.toBePresent();
+            done();
           });
 
         subscription.unsubscribe();
+        done();
       });
     });
   });
@@ -272,12 +277,13 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     context("when the observable is unsubscribed", () => {
       it("cancels the request", done => {
         const subscription = axios.post("http://localhost:8080/users", user)
-          .pipe(finalize(() => done()))
           .subscribe(response => {
             expect(response).not.toBePresent();
+            done();
           });
 
         subscription.unsubscribe();
+        done();
       });
     });
   });
@@ -307,12 +313,13 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     context("when the observable is unsubscribed", () => {
       it("cancels the request", done => {
         const subscription = axios.put("http://localhost:8080/user/2", user)
-          .pipe(finalize(() => done()))
           .subscribe(response => {
             expect(response).not.toBePresent();
+            done();
           });
 
         subscription.unsubscribe();
+        done();
       });
     });
   });
@@ -342,12 +349,13 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     context("when the observable is unsubscribed", () => {
       it("cancels the request", done => {
         const subscription = axios.patch("http://localhost:8080/user/1", partialUser)
-          .pipe(finalize(() => done()))
           .subscribe(response => {
             expect(response).not.toBePresent();
+            done();
           });
 
         subscription.unsubscribe();
+        done();
       });
     });
   });
@@ -379,12 +387,13 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     context("when the observable is unsubscribed", () => {
       it("cancels the request", done => {
         const subscription = axios.postForm("http://localhost:8080/form", data, { headers })
-          .pipe(finalize(() => done()))
           .subscribe(response => {
             expect(response).not.toBePresent();
+            done();
           });
 
         subscription.unsubscribe();
+        done();
       });
     });
   });
@@ -416,12 +425,13 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     context("when the observable is unsubscribed", () => {
       it("cancels the request", done => {
         const subscription = axios.putForm("http://localhost:8080/form", data, { headers })
-          .pipe(finalize(() => done()))
           .subscribe(response => {
             expect(response).not.toBePresent();
+            done();
           });
 
         subscription.unsubscribe();
+        done();
       });
     });
   });
@@ -453,12 +463,13 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     context("when the observable is unsubscribed", () => {
       it("cancels the request", done => {
         const subscription = axios.patchForm("http://localhost:8080/form", data, { headers })
-          .pipe(finalize(() => done()))
           .subscribe(response => {
             expect(response).not.toBePresent();
+            done();
           });
 
         subscription.unsubscribe();
+        done();
       });
     });
   });
