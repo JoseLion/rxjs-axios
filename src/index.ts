@@ -48,4 +48,3 @@ export {
 export { RxjsAxios as Axios } from "./lib/RxjsAxios";
 
 export const axios = RxjsAxios.of(defaultAxios);
-export default axios;
