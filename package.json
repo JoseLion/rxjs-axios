@@ -17,7 +17,6 @@
     "rxjs",
     "rxjs-observable"
   ],
-  "private": true,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -31,6 +30,7 @@
     "check": "yarn compile && yarn lint && yarn test",
     "compile": "tsc",
     "lint": "tslint -p tsconfig.json -c tslint.json \"**/*.ts\"",
+    "release": "semantic-release",
     "test": "NODE_ENV=test mocha"
   },
   "devDependencies": {
@@ -43,6 +43,7 @@
     "mocha": "^10.1.0",
     "msw": "^0.47.4",
     "rxjs": "^7.5.7",
+    "semantic-release": "^19.0.5",
     "sinon": "^14.0.1",
     "ts-node": "^10.9.1",
     "tslint": "^6.1.3",

@@ -89,6 +89,22 @@ jobs:
           name: Test
           command: yarn test --forbid-only
 
+  release:
+    working_directory: ~/repos/rxjs-axios
+    executor: basic
+
+    steps:
+      - bootstrap:
+          nodejs: "19.0.1"
+
+      - run:
+          name: Build
+          command: yarn build
+
+      - run:
+          name: Release
+          command: yarn release
+
 workflows:
   main:
     jobs:
@@ -98,3 +114,10 @@ workflows:
               nodejs: ["16", "17", "18", "19"]
               rxjs: ["7.5.7", "6.6.7", "5.5.12"]
               axios: ["1.1.3", "1.0.0"]
+
+      - release:
+          requires:
+            - build
+          filters:
+            branches:
+              only: release
