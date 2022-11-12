@@ -596,16 +596,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sinonjs/commons@npm:^1.6.0, @sinonjs/commons@npm:^1.7.0, @sinonjs/commons@npm:^1.8.3":
-  version: 1.8.4
-  resolution: "@sinonjs/commons@npm:1.8.4"
+"@sinonjs/commons@npm:^1.7.0":
+  version: 1.8.5
+  resolution: "@sinonjs/commons@npm:1.8.5"
   dependencies:
     type-detect: 4.0.8
-  checksum: 166233340d4faf8596fc0034744086f88ac538660acde49e7a3f71282424e12494b02f9910c09fbc8eab56fc99342499904f56b6ddbc11539e735324dc586b2e
+  checksum: 74cb49e2f245dc0bfac990553dad0583884321f249522b3f73a6474ee9d7abe251814ebaab8094de7e94489d8efe415902fa67c47f637b751c121591b3cf5c39
   languageName: node
   linkType: hard
 
-"@sinonjs/fake-timers@npm:>=5, @sinonjs/fake-timers@npm:^9.1.2":
+"@sinonjs/commons@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@sinonjs/commons@npm:2.0.0"
+  dependencies:
+    type-detect: 4.0.8
+  checksum: 5023ba17edf2b85ed58262313b8e9b59e23c6860681a9af0200f239fe939e2b79736d04a260e8270ddd57196851dde3ba754d7230be5c5234e777ae2ca8af137
+  languageName: node
+  linkType: hard
+
+"@sinonjs/fake-timers@npm:^7.0.4":
+  version: 7.1.2
+  resolution: "@sinonjs/fake-timers@npm:7.1.2"
+  dependencies:
+    "@sinonjs/commons": ^1.7.0
+  checksum: c84773d7973edad5511a31d2cc75023447b5cf714a84de9bb50eda45dda88a0d3bd2c30bf6e6e936da50a048d5352e2151c694e13e59b97d187ba1f329e9a00c
+  languageName: node
+  linkType: hard
+
+"@sinonjs/fake-timers@npm:^9.1.2":
   version: 9.1.2
   resolution: "@sinonjs/fake-timers@npm:9.1.2"
   dependencies:
@@ -614,14 +632,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sinonjs/samsam@npm:^6.1.1":
-  version: 6.1.3
-  resolution: "@sinonjs/samsam@npm:6.1.3"
+"@sinonjs/samsam@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@sinonjs/samsam@npm:7.0.1"
   dependencies:
-    "@sinonjs/commons": ^1.6.0
+    "@sinonjs/commons": ^2.0.0
     lodash.get: ^4.4.2
     type-detect: ^4.0.8
-  checksum: d533e8792af00879d78dd181822e8b00bb8a81671f2fbcf1c5257a59649b21d881ba7ddc42aaf09690d7325c8a6dcc7a1a341591a379742b54e4eb25b273417a
+  checksum: 291efb158d54c67dee23ddabcb28873d22063449b692aaa3b2a4f1826d2f79d38695574063c92e9c17573cc805cd6acbf0ab0c66c9f3aed7afd0f12a2b905615
   languageName: node
   linkType: hard
 
@@ -1590,15 +1608,15 @@ __metadata:
   linkType: hard
 
 "cosmiconfig@npm:^7.0.0":
-  version: 7.0.1
-  resolution: "cosmiconfig@npm:7.0.1"
+  version: 7.1.0
+  resolution: "cosmiconfig@npm:7.1.0"
   dependencies:
     "@types/parse-json": ^4.0.0
     import-fresh: ^3.2.1
     parse-json: ^5.0.0
     path-type: ^4.0.0
     yaml: ^1.10.0
-  checksum: 4be63e7117955fd88333d7460e4c466a90f556df6ef34efd59034d2463484e339666c41f02b523d574a797ec61f4a91918c5b89a316db2ea2f834e0d2d09465b
+  checksum: c53bf7befc1591b2651a22414a5e786cd5f2eeaa87f3678a3d49d6069835a9d8d1aef223728e98aa8fec9a95bf831120d245096db12abe019fecb51f5696c96f
   languageName: node
   linkType: hard
 
@@ -1786,6 +1804,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"doctrine@npm:0.7.2":
+  version: 0.7.2
+  resolution: "doctrine@npm:0.7.2"
+  dependencies:
+    esutils: ^1.1.6
+    isarray: 0.0.1
+  checksum: 27d76a9a0f05c04a0011b8930ca79ffc28d93c7cebf6ea5baad8f387f2225999ad97bc3454a7e84bbfcc4f46ac78062dbda0a4197f3ed1b36df8db651baf4513
+  languageName: node
+  linkType: hard
+
 "dot-prop@npm:^5.1.0":
   version: 5.3.0
   resolution: "dot-prop@npm:5.3.0"
@@ -1882,6 +1910,13 @@ __metadata:
     esparse: ./bin/esparse.js
     esvalidate: ./bin/esvalidate.js
   checksum: b45bc805a613dbea2835278c306b91aff6173c8d034223fa81498c77dcbce3b2931bf6006db816f62eacd9fd4ea975dfd85a5b7f3c6402cfd050d4ca3c13a628
+  languageName: node
+  linkType: hard
+
+"esutils@npm:^1.1.6":
+  version: 1.1.6
+  resolution: "esutils@npm:1.1.6"
+  checksum: 1c6dbba5c2f67d5400432b5700ba58a67b5131f8d1c35cd9cf7b7b39b5ce1a06d4e6ef14571617cf3c155fd98133620b846f0ba76d04b2e37ee58f5e6d737a07
   languageName: node
   linkType: hard
 
@@ -3568,9 +3603,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:^0.47.4":
-  version: 0.47.4
-  resolution: "msw@npm:0.47.4"
+"msw@npm:^0.48.1":
+  version: 0.48.1
+  resolution: "msw@npm:0.48.1"
   dependencies:
     "@mswjs/cookies": ^0.2.2
     "@mswjs/interceptors": ^0.17.5
@@ -3599,7 +3634,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: 10ff632641d40384d6622abf4df6399e4ae649db0f676b5d1ee2d0a515ec96f33abe9d4fecba08cdba4b2e43255af419da9eefc020d40a7e10669d0906457197
+  checksum: fbe255fd7d97058663f4807c570dadd3c83948f3d2675c13932ca22346a2c2a15c4e3681af7408ca96efba258223b933ad2aaed3c881a354118dbd8174d697ba
   languageName: node
   linkType: hard
 
@@ -3640,16 +3675,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nise@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "nise@npm:5.1.1"
+"nise@npm:^5.1.2":
+  version: 5.1.2
+  resolution: "nise@npm:5.1.2"
   dependencies:
-    "@sinonjs/commons": ^1.8.3
-    "@sinonjs/fake-timers": ">=5"
+    "@sinonjs/commons": ^2.0.0
+    "@sinonjs/fake-timers": ^7.0.4
     "@sinonjs/text-encoding": ^0.7.1
     just-extend: ^4.0.2
     path-to-regexp: ^1.7.0
-  checksum: d8be29e84a014743c9a10f428fac86f294ac5f92bed1f606fe9b551e935f494d8e0ce1af8a12673c6014010ec7f771f2d48aa5c8e116f223eb4f40c5e1ab44b3
+  checksum: 688c557333dcbc5b41f4f1f1b0ea32fb0f8b424541a8958140bc61074980362c954b2aeb027c282de26b9ddcb4b230656f68ac4206777499e405dd7e716ec1f8
   languageName: node
   linkType: hard
 
@@ -4702,12 +4737,13 @@ __metadata:
     axios: ^1.1.3
     form-data: ^4.0.0
     mocha: ^10.1.0
-    msw: ^0.47.4
+    msw: ^0.48.1
     rxjs: ^7.5.7
     semantic-release: ^19.0.5
-    sinon: ^14.0.1
+    sinon: ^14.0.2
     ts-node: ^10.9.1
     tslint: ^6.1.3
+    tslint-eslint-rules: ^5.4.0
     typescript: ^4.8.4
   peerDependencies:
     axios: ">=1.0.0"
@@ -4890,17 +4926,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sinon@npm:^14.0.1":
-  version: 14.0.1
-  resolution: "sinon@npm:14.0.1"
+"sinon@npm:^14.0.2":
+  version: 14.0.2
+  resolution: "sinon@npm:14.0.2"
   dependencies:
-    "@sinonjs/commons": ^1.8.3
+    "@sinonjs/commons": ^2.0.0
     "@sinonjs/fake-timers": ^9.1.2
-    "@sinonjs/samsam": ^6.1.1
+    "@sinonjs/samsam": ^7.0.1
     diff: ^5.0.0
-    nise: ^5.1.1
+    nise: ^5.1.2
     supports-color: ^7.2.0
-  checksum: 55dd8dc9f33bf714fcd4cf9af5b67a3ba854da9e94d4be70bfbc13fa1113db03bdccec21fe1ded1dbf750a21f35be9727c779178ac981e55eeac9245acfdaa74
+  checksum: de7730cd7785a457e42f9a93e955780c870296036a13816e3c0c5648360afae82fdc748e36c854cf26fb8abd117855a7211aee49265c334fa61439aae17a1b72
   languageName: node
   linkType: hard
 
@@ -5340,6 +5376,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:1.9.0":
+  version: 1.9.0
+  resolution: "tslib@npm:1.9.0"
+  checksum: 6f153f1f3a05855fd83fca3e6c45b7d545176d9e3d52e3e592484a5f293193e36aa8cfc8dc086ae71e4a81ebb9ca9cc965604cc742e56428750a522df0c3b38c
+  languageName: node
+  linkType: hard
+
 "tslib@npm:^1.13.0, tslib@npm:^1.8.1":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
@@ -5351,6 +5394,20 @@ __metadata:
   version: 2.4.1
   resolution: "tslib@npm:2.4.1"
   checksum: 19480d6e0313292bd6505d4efe096a6b31c70e21cf08b5febf4da62e95c265c8f571f7b36fcc3d1a17e068032f59c269fab3459d6cd3ed6949eafecf64315fca
+  languageName: node
+  linkType: hard
+
+"tslint-eslint-rules@npm:^5.4.0":
+  version: 5.4.0
+  resolution: "tslint-eslint-rules@npm:5.4.0"
+  dependencies:
+    doctrine: 0.7.2
+    tslib: 1.9.0
+    tsutils: ^3.0.0
+  peerDependencies:
+    tslint: ^5.0.0
+    typescript: ^2.2.0 || ^3.0.0
+  checksum: 23c3392d472a7d202976066a8e042affb4fe2965b2bc554aeefe9260913489ba7b24df1a09cf71cbaa465ae03d48b4bdf3ee81c9a67c0b19aaab86043f30d755
   languageName: node
   linkType: hard
 
@@ -5387,6 +5444,17 @@ __metadata:
   peerDependencies:
     typescript: ">=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 3.0.0-dev || >= 3.1.0-dev"
   checksum: 5d681bab79979e3b4d61dd0d1e6c1dd6a79b5608cf8dec5a5ee599ac8b5921107870bcf037140b8dce85a479df78aee0ffa61c1b3d8e5660748af36551946616
+  languageName: node
+  linkType: hard
+
+"tsutils@npm:^3.0.0":
+  version: 3.21.0
+  resolution: "tsutils@npm:3.21.0"
+  dependencies:
+    tslib: ^1.8.1
+  peerDependencies:
+    typescript: ">=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta"
+  checksum: 1843f4c1b2e0f975e08c4c21caa4af4f7f65a12ac1b81b3b8489366826259323feb3fc7a243123453d2d1a02314205a7634e048d4a8009921da19f99755cdc48
   languageName: node
   linkType: hard
 

@@ -76,7 +76,7 @@ export class RxjsAxios {
     const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.request<T, R, D>({ ...config, signal}),
+      () => this.axios.request<T, R, D>({ ...config, signal }),
       controller,
     );
   }
@@ -88,7 +88,7 @@ export class RxjsAxios {
     const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.get<T, R, D>(url, { ...config, signal}),
+      () => this.axios.get<T, R, D>(url, { ...config, signal }),
       controller,
     );
   }
@@ -100,7 +100,7 @@ export class RxjsAxios {
     const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.delete<T, R, D>(url, { ...config, signal}),
+      () => this.axios.delete<T, R, D>(url, { ...config, signal }),
       controller,
     );
   }
@@ -112,7 +112,7 @@ export class RxjsAxios {
     const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.head<T, R, D>(url, { ...config, signal}),
+      () => this.axios.head<T, R, D>(url, { ...config, signal }),
       controller,
     );
   }
@@ -124,7 +124,7 @@ export class RxjsAxios {
     const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.options<T, R, D>(url, { ...config, signal}),
+      () => this.axios.options<T, R, D>(url, { ...config, signal }),
       controller,
     );
   }
@@ -137,7 +137,7 @@ export class RxjsAxios {
     const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.post<T, R, D>(url, data, { ...config, signal}),
+      () => this.axios.post<T, R, D>(url, data, { ...config, signal }),
       controller,
     );
   }
@@ -150,7 +150,7 @@ export class RxjsAxios {
     const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.put<T, R, D>(url, data, { ...config, signal}),
+      () => this.axios.put<T, R, D>(url, data, { ...config, signal }),
       controller,
     );
   }
@@ -163,7 +163,7 @@ export class RxjsAxios {
     const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.patch<T, R, D>(url, data, { ...config, signal}),
+      () => this.axios.patch<T, R, D>(url, data, { ...config, signal }),
       controller,
     );
   }
@@ -176,7 +176,7 @@ export class RxjsAxios {
     const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.postForm<T, R, D>(url, data, { ...config, signal}),
+      () => this.axios.postForm<T, R, D>(url, data, { ...config, signal }),
       controller,
     );
   }
@@ -189,7 +189,7 @@ export class RxjsAxios {
     const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.putForm<T, R, D>(url, data, { ...config, signal}),
+      () => this.axios.putForm<T, R, D>(url, data, { ...config, signal }),
       controller,
     );
   }
@@ -202,7 +202,7 @@ export class RxjsAxios {
     const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.patchForm<T, R, D>(url, data, { ...config, signal}),
+      () => this.axios.patchForm<T, R, D>(url, data, { ...config, signal }),
       controller,
     );
   }
