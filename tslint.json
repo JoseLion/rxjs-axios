@@ -23,7 +23,7 @@
     "linebreak-style": [true, "LF"],
     "max-line-length": [true, 120],
     "member-access": [true, "check-constructor"],
-    "no-console": true,
+    "no-console": [true, "log"],
     "no-duplicate-imports": true,
     "no-namespace": false,
     "no-trailing-whitespace": true,
