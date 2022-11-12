@@ -1,5 +1,4 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/JoseLion/rxjs-axios/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/JoseLion/rxjs-axios/tree/main)
-[![npm version](https://badge.fury.io/js/rxjs-axios.svg)](https://badge.fury.io/js/rxjs-axios)
 
 # rxjs-axios
 A complete Axios wrapper that uses RxJS observables instead of promises. Same Axios API, but anything that used to return a `Promise<T>` will now return an `Observable<T>` instead.
