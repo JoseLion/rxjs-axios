@@ -1,10 +1,10 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/JoseLion/rxjs-axios/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/JoseLion/rxjs-axios/tree/main)
-![NPM version](https://img.shields.io/npm/v/rxjs-axios)
-![NPM bundle size](https://img.shields.io/bundlephobia/min/rxjs-axios)
-![NPM downloads](https://img.shields.io/npm/dm/rxjs-axios)
-![NPM license](https://img.shields.io/npm/l/rxjs-axios)
-![GitHub Release Date](https://img.shields.io/github/release-date/JoseLion/rxjs-axios)
-![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/rxjs-axios)
+[![NPM version](https://img.shields.io/npm/v/rxjs-axios)](https://www.npmjs.com/package/rxjs-axios)
+[![NPM bundle size](https://img.shields.io/bundlephobia/min/rxjs-axios)](https://www.npmjs.com/package/rxjs-axios)
+[![NPM downloads](https://img.shields.io/npm/dm/rxjs-axios)](https://www.npmjs.com/package/rxjs-axios)
+[![NPM license](https://img.shields.io/npm/l/rxjs-axios)](./LICENSE)
+[![GitHub Release Date](https://img.shields.io/github/release-date/JoseLion/rxjs-axios)](https://github.com/JoseLion/rxjs-axios/releases)
+[![Snyk Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/rxjs-axios)](https://snyk.io/)
 
 # rxjs-axios
 A complete Axios wrapper that uses RxJS observables instead of promises. Same Axios API, but anything that used to return a `Promise<T>` will now return an `Observable<T>` instead.
