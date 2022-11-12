@@ -14,7 +14,7 @@ Even though there are a few options out there for Axios wrappers converting its 
   - Methods no longer default their type to `any`. Instead, they default to `unknown`, which not only makes things safer but also forces you to add better types to your code.
 - Unsubscribing cancels the request.
   - Cancellation happens on the observable teardown logic, with no mutation or workarounds.
-  - Setting a cancel token on the request config has no effect. Cancellation is always handled by the observable.
+  - Uses [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) instead of Axios deprecated `CancelToken`.
 - Seamless usage; works just like Axios.
   - Besides the Observables, you won't feel any difference with Axios API.
   - All Axios methods are provided. Other libraries only provide the most commonly used methods (e.g., `get`, `post`, `put`, etc.), while rxjs-axios provide everything available in the Axios instance, like `request(..)`, all form-related methods (e.g., `postForm(..)`, `toFormData(..)`, `formToJSON(..)`, etc.), `isAxiosError(..)`, `defaults`, `interceptors`.

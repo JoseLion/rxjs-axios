@@ -1,5 +1,5 @@
 import { expect } from "@stackbuilders/assertive-ts";
-import axios, { AxiosError, AxiosResponse, CancelTokenSource } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import Sinon from "sinon";
 
 import { observify } from "../../src/lib/observify";
@@ -15,7 +15,7 @@ const RESPONSE: AxiosResponse<string> = {
 
 const REQUEST_ERROR = new AxiosError("Something went wrong", "Bad Request");
 
-const CancelToken = axios.CancelToken;
+const controller = new AbortController();
 
 describe("[Unit] observify.test.ts", () => {
   describe(".observify", () => {
@@ -24,7 +24,7 @@ describe("[Unit] observify.test.ts", () => {
         it("sets the axios response on the next value and completes the observable", done => {
           const observable = observify(
             () => Promise.resolve<AxiosResponse>(RESPONSE),
-            CancelToken.source(),
+            controller,
           );
 
           observable.subscribe({
@@ -37,15 +37,10 @@ describe("[Unit] observify.test.ts", () => {
 
       context("and the observable is unsubscribed", () => {
         it("does not set the next value and cancels the request", done => {
-          const cancel = Sinon.spy(() => undefined);
-          const cancelSource: CancelTokenSource = {
-            cancel,
-            token: CancelToken.source().token,
-          };
-
+          const abort = Sinon.spy(controller, "abort");
           const observable = observify(
             () => delay(10).then(() => RESPONSE),
-            cancelSource,
+            controller,
           );
 
           const subscription = observable.subscribe({
@@ -57,7 +52,7 @@ describe("[Unit] observify.test.ts", () => {
           subscription.unsubscribe();
 
           delay(20)
-            .then(() => Sinon.assert.calledOnce(cancel))
+            .then(() => Sinon.assert.calledOnce(abort))
             .then(done)
             .catch(done);
         });
@@ -69,7 +64,7 @@ describe("[Unit] observify.test.ts", () => {
         it("sets the axios error on the error value and completes the observable", done => {
           const observable = observify(
             () => Promise.reject(REQUEST_ERROR),
-            CancelToken.source(),
+            controller,
           );
 
           observable.subscribe({
@@ -85,15 +80,10 @@ describe("[Unit] observify.test.ts", () => {
 
       context("and the observable is unsubscribed", () => {
         it("does not set the error value and cancels the request", done => {
-          const cancel = Sinon.spy(() => undefined);
-          const cancelSource: CancelTokenSource = {
-            cancel,
-            token: CancelToken.source().token,
-          };
-
+          const abort = Sinon.spy(controller, "abort");
           const observable = observify(
             () => delay(10).then(() => Promise.reject(REQUEST_ERROR)),
-            cancelSource,
+            controller,
           );
 
           const subscription = observable.subscribe({
@@ -105,7 +95,7 @@ describe("[Unit] observify.test.ts", () => {
           subscription.unsubscribe();
 
           delay(20)
-            .then(() => Sinon.assert.calledOnce(cancel))
+            .then(() => Sinon.assert.calledOnce(abort))
             .then(done)
             .catch(done);
         });

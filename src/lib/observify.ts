@@ -1,9 +1,9 @@
-import { AxiosResponse, CancelTokenSource } from "axios";
+import { AxiosResponse } from "axios";
 import { Observable } from "rxjs";
 
 export function observify<T, R extends AxiosResponse<T>>(
   makeRequest: () => Promise<R>,
-  cancelSource: CancelTokenSource,
+  controller: AbortController,
 ): Observable<R> {
   return new Observable(subscriber => {
     makeRequest()
@@ -11,6 +11,6 @@ export function observify<T, R extends AxiosResponse<T>>(
       .catch(error => subscriber.error(error))
       .finally(() => subscriber.complete());
 
-    return { unsubscribe: () => cancelSource.cancel() };
+    return { unsubscribe: () => controller.abort() };
   });
 }

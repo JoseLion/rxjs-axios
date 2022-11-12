@@ -5,9 +5,6 @@ import axios, {
   AxiosInterceptorManager,
   AxiosRequestConfig,
   AxiosResponse, Cancel,
-  CancelToken,
-  CancelTokenSource,
-  CancelTokenStatic,
   CreateAxiosDefaults,
   FormSerializerOptions,
   GenericFormData,
@@ -22,20 +19,17 @@ interface Interceptors {
   response: AxiosInterceptorManager<AxiosResponse>;
 }
 
-interface Cancellable {
-  cancelSource: CancelTokenSource;
-  cancelToken: CancelToken;
+interface Abortable {
+  controller: AbortController;
+  signal: AbortSignal;
 }
 
 export class RxjsAxios {
 
   private axios: AxiosInstance;
 
-  private CancelToken: CancelTokenStatic;
-
   private constructor(instance: AxiosInstance) {
     this.axios = instance;
-    this.CancelToken = axios.CancelToken;
   }
 
   public static of(instance: AxiosInstance): RxjsAxios {
@@ -79,11 +73,11 @@ export class RxjsAxios {
   public request<T, R extends AxiosResponse<T> = AxiosResponse<T>, D = unknown>(
     config: AxiosRequestConfig<D>,
   ): Observable<R> {
-    const { cancelSource, cancelToken } = this.makeCancellable();
+    const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.request<T, R, D>({ ...config, cancelToken }),
-      cancelSource,
+      () => this.axios.request<T, R, D>({ ...config, signal}),
+      controller,
     );
   }
 
@@ -91,11 +85,11 @@ export class RxjsAxios {
     url: string,
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
-    const { cancelSource, cancelToken } = this.makeCancellable();
+    const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.get<T, R, D>(url, { ...config, cancelToken }),
-      cancelSource,
+      () => this.axios.get<T, R, D>(url, { ...config, signal}),
+      controller,
     );
   }
 
@@ -103,11 +97,11 @@ export class RxjsAxios {
     url: string,
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
-    const { cancelSource, cancelToken } = this.makeCancellable();
+    const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.delete<T, R, D>(url, { ...config, cancelToken }),
-      cancelSource,
+      () => this.axios.delete<T, R, D>(url, { ...config, signal}),
+      controller,
     );
   }
 
@@ -115,11 +109,11 @@ export class RxjsAxios {
     url: string,
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
-    const { cancelSource, cancelToken } = this.makeCancellable();
+    const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.head<T, R, D>(url, { ...config, cancelToken }),
-      cancelSource,
+      () => this.axios.head<T, R, D>(url, { ...config, signal}),
+      controller,
     );
   }
 
@@ -127,11 +121,11 @@ export class RxjsAxios {
     url: string,
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
-    const { cancelSource, cancelToken } = this.makeCancellable();
+    const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.options<T, R, D>(url, { ...config, cancelToken }),
-      cancelSource,
+      () => this.axios.options<T, R, D>(url, { ...config, signal}),
+      controller,
     );
   }
 
@@ -140,11 +134,11 @@ export class RxjsAxios {
     data?: D,
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
-    const { cancelSource, cancelToken } = this.makeCancellable();
+    const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.post<T, R, D>(url, data, { ...config, cancelToken }),
-      cancelSource,
+      () => this.axios.post<T, R, D>(url, data, { ...config, signal}),
+      controller,
     );
   }
 
@@ -153,11 +147,11 @@ export class RxjsAxios {
     data?: D,
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
-    const { cancelSource, cancelToken } = this.makeCancellable();
+    const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.put<T, R, D>(url, data, { ...config, cancelToken }),
-      cancelSource,
+      () => this.axios.put<T, R, D>(url, data, { ...config, signal}),
+      controller,
     );
   }
 
@@ -166,11 +160,11 @@ export class RxjsAxios {
     data?: D,
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
-    const { cancelSource, cancelToken } = this.makeCancellable();
+    const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.patch<T, R, D>(url, data, { ...config, cancelToken }),
-      cancelSource,
+      () => this.axios.patch<T, R, D>(url, data, { ...config, signal}),
+      controller,
     );
   }
 
@@ -179,11 +173,11 @@ export class RxjsAxios {
     data?: D,
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
-    const { cancelSource, cancelToken } = this.makeCancellable();
+    const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.postForm<T, R, D>(url, data, { ...config, cancelToken }),
-      cancelSource,
+      () => this.axios.postForm<T, R, D>(url, data, { ...config, signal}),
+      controller,
     );
   }
 
@@ -192,11 +186,11 @@ export class RxjsAxios {
     data?: D,
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
-    const { cancelSource, cancelToken } = this.makeCancellable();
+    const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.putForm<T, R, D>(url, data, { ...config, cancelToken }),
-      cancelSource,
+      () => this.axios.putForm<T, R, D>(url, data, { ...config, signal}),
+      controller,
     );
   }
 
@@ -205,21 +199,21 @@ export class RxjsAxios {
     data?: D,
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
-    const { cancelSource, cancelToken } = this.makeCancellable();
+    const { controller, signal } = this.makeCancellable();
 
     return observify(
-      () => this.axios.patchForm<T, R, D>(url, data, { ...config, cancelToken }),
-      cancelSource,
+      () => this.axios.patchForm<T, R, D>(url, data, { ...config, signal}),
+      controller,
     );
   }
 
-  private makeCancellable(): Cancellable {
-    const cancelSource = this.CancelToken.source();
-    const cancelToken = cancelSource.token;
+  private makeCancellable(): Abortable {
+    const controller = new AbortController();
+    const signal = controller.signal;
 
     return {
-      cancelSource,
-      cancelToken,
+      controller,
+      signal,
     };
   }
 }
