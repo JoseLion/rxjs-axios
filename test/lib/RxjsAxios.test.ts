@@ -1,5 +1,5 @@
 import { expect, TypeFactories } from "@stackbuilders/assertive-ts";
-import otherAxios from "axios";
+import originalAxios from "axios";
 import FormData from "form-data";
 import { Observable } from "rxjs";
 import Sinon from "sinon";
@@ -10,11 +10,11 @@ import { RxjsAxios } from "../../src/lib/RxjsAxios";
 describe("[Unit] RxjsAxios.test.ts", () => {
   describe(".of", () => {
     it("creates an RxjsAxios instance from another Axios instance", () => {
-      const rxjsAxios = RxjsAxios.of(otherAxios);
+      const rxjsAxios = RxjsAxios.of(originalAxios);
 
       expect(Object(rxjsAxios))
         .asType(TypeFactories.object())
-        .toContainEntry(["axios", otherAxios]);
+        .toContainEntry(["axios", originalAxios]);
     });
   });
 
@@ -28,7 +28,7 @@ describe("[Unit] RxjsAxios.test.ts", () => {
 
   describe(".isAxiosError", () => {
     it("calls the same Axios method", () => {
-      const spy = Sinon.spy(otherAxios, "isAxiosError");
+      const spy = Sinon.spy(originalAxios, "isAxiosError");
 
       RxjsAxios.isAxiosError("foo");
 
@@ -38,7 +38,7 @@ describe("[Unit] RxjsAxios.test.ts", () => {
 
   describe(".isCancel", () => {
     it("calls the same Axios method", () => {
-      const spy = Sinon.spy(otherAxios, "isCancel");
+      const spy = Sinon.spy(originalAxios, "isCancel");
 
       RxjsAxios.isCancel("foo");
 
@@ -48,7 +48,7 @@ describe("[Unit] RxjsAxios.test.ts", () => {
 
   describe(".toFormData", () => {
     it("calls the same Axios method", () => {
-      const spy = Sinon.spy(otherAxios, "toFormData");
+      const spy = Sinon.spy(originalAxios, "toFormData");
 
       RxjsAxios.toFormData({ });
 
@@ -58,7 +58,7 @@ describe("[Unit] RxjsAxios.test.ts", () => {
 
   describe(".formToJSON", () => {
     it("calls the same Axios method", () => {
-      const spy = Sinon.spy(otherAxios, "formToJSON");
+      const spy = Sinon.spy(originalAxios, "formToJSON");
       const formData = new FormData();
 
       RxjsAxios.formToJSON(formData);
@@ -77,9 +77,9 @@ describe("[Unit] RxjsAxios.test.ts", () => {
 
   describe("#interceptors", () => {
     it("returns the instance interceptors", () => {
-      const rxjsAxios = RxjsAxios.of(otherAxios);
+      const rxjsAxios = RxjsAxios.of(originalAxios);
 
-      expect(rxjsAxios.interceptors).toBeSame(otherAxios.interceptors);
+      expect(rxjsAxios.interceptors).toBeSame(originalAxios.interceptors);
     });
   });
 
