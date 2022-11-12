@@ -1,8 +1,17 @@
 {
   "defaultSeverity": "error",
   "extends": [
-    "tslint:recommended"
+    "tslint:recommended",
+    "tslint-eslint-rules"
   ],
+  "linterOptions": {
+    "exclude": [
+      ".yarn/**/*",
+      "build/**/*",
+      "dist/**/*",
+      "node_modules/**/*"
+    ]
+  },
   "rules": {
     "align": [true, "statements"],
     "array-type": false,
@@ -21,6 +30,7 @@
     "no-unbound-method": false,
     "no-unused-expression": false,
     "only-arrow-functions": false,
+    "object-curly-spacing": [true, "always"],
     "object-literal-sort-keys": true,
     "ordered-imports": [
       true,
@@ -28,19 +38,6 @@
     ],
     "quotemark": [true, "double", "avoid-escape", "avoid-template"],
     "semicolon": true,
-    "whitespace": [
-      true, 
-      "check-branch",
-      "check-decl",
-      "check-operator",
-      "check-module",
-      "check-separator",
-      "check-rest-spread",
-      "check-type",
-      "check-typecast",
-      "check-type-operator",
-      "check-preblock"
-    ],
     "trailing-comma": [true, {
       "singleline": "never",
       "multiline": {
@@ -53,14 +50,19 @@
       },
       "esSpecCompliant": true
     }],
-    "variable-name": [true, "allow-pascal-case", "allow-leading-underscore"]
-  },
-  "linterOptions": {
-    "exclude": [
-      ".yarn/**/*",
-      "build/**/*",
-      "dist/**/*",
-      "node_modules/**/*"
+    "variable-name": [true, "allow-pascal-case", "allow-leading-underscore"],
+    "whitespace": [
+      true, 
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-rest-spread",
+      "check-type",
+      "check-typecast",
+      "check-type-operator",
+      "check-preblock"
     ]
   }
 }
