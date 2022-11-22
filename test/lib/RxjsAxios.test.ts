@@ -95,7 +95,7 @@ describe("[Unit] RxjsAxios.test.ts", () => {
         axios.request({ method: "GET", url: "http://localhost:8080/users" })
           .subscribe(response => {
             expect(response).toPartiallyMatch({
-              data: [{ name: "John", lastname: "Doe" }],
+              data: [{ lastname: "Doe", name: "John" }],
               status: 200,
             });
 
@@ -130,7 +130,7 @@ describe("[Unit] RxjsAxios.test.ts", () => {
         axios.get("http://localhost:8080/users")
           .subscribe(response => {
             expect(response).toPartiallyMatch({
-              data: [{ name: "John", lastname: "Doe" }],
+              data: [{ lastname: "Doe", name: "John" }],
               status: 200,
             });
 
@@ -254,7 +254,7 @@ describe("[Unit] RxjsAxios.test.ts", () => {
   });
 
   describe(".post", () => {
-    const user = { name: "foo", lastname: "bar" };
+    const user = { lastname: "bar", name: "foo" };
     const request = axios.post("http://localhost:8080/users", user);
 
     it("returns an Observable", () => {
@@ -290,7 +290,7 @@ describe("[Unit] RxjsAxios.test.ts", () => {
   });
 
   describe(".put", () => {
-    const user = { name: "foo", lastname: "bar" };
+    const user = { lastname: "bar", name: "foo" };
     const request = axios.put("http://localhost:8080/user/2", user);
 
     it("returns an Observable", () => {
@@ -338,7 +338,7 @@ describe("[Unit] RxjsAxios.test.ts", () => {
         axios.patch("http://localhost:8080/user/1", partialUser)
           .subscribe(response => {
             expect(response).toPartiallyMatch({
-              data: { id: 1, name: "John", lastName: "Doe", ...partialUser },
+              data: { id: 1, name: "John", ...partialUser },
               status: 200,
             });
 
