@@ -4,15 +4,15 @@ import { server } from "./helpers/server";
 
 export const mochaHooks: () => Mocha.RootHookObject = () => {
   return {
-    beforeAll() {
-      server.listen();
+    afterAll() {
+      server.close();
     },
     afterEach() {
       Sinon.restore();
       server.resetHandlers();
     },
-    afterAll() {
-      server.close();
+    beforeAll() {
+      server.listen();
     },
   };
 };
