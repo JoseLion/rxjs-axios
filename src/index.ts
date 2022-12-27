@@ -6,14 +6,14 @@ import { RxjsAxios } from "./lib/RxjsAxios";
 export type AxiosObservable<T> = Observable<AxiosResponse<T>>;
 
 /**
- * Re-export all everithing from axios, except anything to do with promises.
+ * Re-export all everything from axios, except anything to do with promises or
+ * types enhencements
  */
 export {
   AxiosError,
   CanceledError,
   type AxiosAdapter,
   type AxiosBasicCredentials,
-  type AxiosDefaults,
   type AxiosHeaders,
   type AxiosInterceptorManager,
   type AxiosInterceptorOptions,
@@ -21,10 +21,8 @@ export {
   type AxiosProxyConfig,
   type AxiosRequestConfig,
   type AxiosRequestHeaders,
-  type AxiosRequestTransformer,
   type AxiosResponse,
   type AxiosResponseHeaders,
-  type AxiosResponseTransformer,
   type CreateAxiosDefaults,
   type CustomParamsSerializer,
   type FormDataVisitorHelpers,
@@ -45,6 +43,15 @@ export {
   type TransitionalOptions,
   type responseEncoding,
 } from "axios";
-export { RxjsAxios as Axios } from "./lib/RxjsAxios";
+
+/**
+ * Export rxjs-axios especifics
+ */
+export {
+  RxjsAxios as Axios,
+  AxiosRequestTransformer,
+  AxiosResponseTransformer,
+  RxjsAxiosDefaults as AxiosDefaults,
+} from "./lib/RxjsAxios";
 
 export const axios = RxjsAxios.of(defaultAxios);

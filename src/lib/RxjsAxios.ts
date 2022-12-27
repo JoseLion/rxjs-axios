@@ -4,7 +4,8 @@ import axios, {
   AxiosInstance,
   AxiosInterceptorManager,
   AxiosRequestConfig,
-  AxiosResponse, Cancel,
+  AxiosRequestHeaders,
+  AxiosResponse, AxiosResponseHeaders, Cancel,
   CreateAxiosDefaults,
   FormSerializerOptions,
   GenericFormData,
@@ -14,9 +15,27 @@ import { Observable } from "rxjs";
 
 import { observify } from "./observify";
 
+export type AxiosRequestTransformer<T> = (
+  this: AxiosRequestConfig<T>,
+  data: T,
+  headers: AxiosRequestHeaders
+) => T;
+
+export type AxiosResponseTransformer<T> = (
+  this: AxiosRequestConfig<T>,
+  data: T,
+  headers: AxiosResponseHeaders,
+  status?: number
+) => T;
+
+export interface RxjsAxiosDefaults<T = unknown> extends AxiosDefaults<T> {
+  transformRequest?: AxiosRequestTransformer<T> | AxiosRequestTransformer<T>[];
+  transformResponse?: AxiosResponseTransformer<T> | AxiosResponseTransformer<T>[];
+}
+
 interface Interceptors {
-  request: AxiosInterceptorManager<AxiosRequestConfig>;
-  response: AxiosInterceptorManager<AxiosResponse>;
+  request: AxiosInterceptorManager<AxiosRequestConfig<unknown>>;
+  response: AxiosInterceptorManager<AxiosResponse<unknown>>;
 }
 
 interface Abortable {
@@ -62,7 +81,7 @@ export class RxjsAxios {
     return axios.formToJSON(form);
   }
 
-  public get defaults(): AxiosDefaults {
+  public get defaults(): RxjsAxiosDefaults {
     return this.axios.defaults;
   }
 
