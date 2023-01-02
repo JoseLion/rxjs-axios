@@ -112,8 +112,8 @@ workflows:
           matrix:
             parameters:
               nodejs: ["16", "17", "18", "19"]
-              rxjs: ["7.5.7", "6.6.7", "5.5.12"]
-              axios: ["1.1.3", "1.0.0"]
+              rxjs: ["5.5.12", "6.6.7", "7.8.0"]
+              axios: ["1.0.0", "1.1.3", "1.2.2"]
 
       - release:
           requires:
