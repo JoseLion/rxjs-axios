@@ -1,17 +1,53 @@
+---
+
 remote_theme: mmistakes/minimal-mistakes
 
-minimal_mistakes_skin: air
-
-atom_feed:
-  hide: true
-
-repository: JoseLion/rxjs-axios
+plugins:
+  - jekyll-include-cache
+  - jekyll-github-metadata
 
 defaults:
   - scope:
       path: ""
+      type: pages
     values:
-      layout: splash
+      author_profile: true
+      classes: wide
+      layout: single
 
-plugins:
-  - jekyll-include-cache
+minimal_mistakes_skin: air
+title: RxJS Axios
+subtitle: A complete Axios wrapper that uses RxJS observables instead of promises
+name: Jose Luis Leon
+repository: JoseLion/rxjs-axios
+atom_feed:
+  hide: true
+twitter:
+  username: joseliont
+author:
+  name: Jose Luis Leon
+  avatar: https://github.com/JoseLion.png
+  email: joseluis5000l@gmail.com
+  links:
+    - label: Repository
+      icon: fab fa-fw fa-github
+      url: https://github.com/JoseLion/rxjs-axios
+    - label: GitHub
+      icon: fab fa-fw fa-github-alt
+      url: https://github.com/JoseLion
+    - label: Twitter
+      icon: fab fa-fw fa-twitter-square
+      url: https://twitter.com/joseliont
+footer:
+  links:
+    - label: Repository
+      icon: fab fa-fw fa-github
+      url: https://github.com/JoseLion/rxjs-axios
+    - label: GitHub
+      icon: fab fa-fw fa-github-alt
+      url: https://github.com/JoseLion
+    - label: Twitter
+      icon: fab fa-fw fa-twitter-square
+      url: https://twitter.com/joseliont
+
+...
