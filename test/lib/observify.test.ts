@@ -1,12 +1,12 @@
 import { expect } from "@stackbuilders/assertive-ts";
-import { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosHeaders, AxiosResponse } from "axios";
 import Sinon from "sinon";
 
 import { observify } from "../../src/lib/observify";
 import { delay } from "../helpers/async.helpers";
 
 const RESPONSE: AxiosResponse<string> = {
-  config: { },
+  config: { headers: AxiosHeaders.from() },
   data: "ok",
   headers: { ["Content-Type"]: "plain/text" },
   status: 200,

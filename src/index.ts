@@ -11,10 +11,10 @@ export type AxiosObservable<T> = Observable<AxiosResponse<T>>;
  */
 export {
   AxiosError,
+  AxiosHeaders,
   CanceledError,
   type AxiosAdapter,
   type AxiosBasicCredentials,
-  type AxiosHeaders,
   type AxiosInterceptorManager,
   type AxiosInterceptorOptions,
   type AxiosProgressEvent,
@@ -51,7 +51,6 @@ export {
   RxjsAxios as Axios,
   AxiosRequestTransformer,
   AxiosResponseTransformer,
-  RxjsAxiosDefaults as AxiosDefaults,
 } from "./lib/RxjsAxios";
 
 export const axios = RxjsAxios.of(defaultAxios);
