@@ -12,26 +12,30 @@ commands:
       nodejs:
         description: The NodeJS version to install
         type: string
+        default: ""
 
     steps:
       - checkout:
           path: ~/repos/rxjs-axios
 
       - run:
-          name: Install NVM
+          name: Install NVM and NodeJS
           command: |
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
             echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --install' >> $BASH_ENV
             source $BASH_ENV
 
-      - run:
-          name: Install NodeJS v<< parameters.nodejs >>
-          command: |
-            nvm install << parameters.nodejs >>
-            nvm use << parameters.nodejs >>
-            nvm alias default << parameters.nodejs >>
-            node --version
+      - when:
+          condition: << parameters.nodejs >>
+          steps:
+            - run:
+                name: Install NodeJS v<< parameters.nodejs >>
+                command: |
+                  nvm install << parameters.nodejs >>
+                  nvm use << parameters.nodejs >>
+                  nvm alias default << parameters.nodejs >>
+                  node --version
 
       - run:
           name: Install yarn
@@ -94,8 +98,7 @@ jobs:
     executor: basic
 
     steps:
-      - bootstrap:
-          nodejs: "19.0.1"
+      - bootstrap
 
       - run:
           name: Build
