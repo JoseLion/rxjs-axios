@@ -1,11 +1,12 @@
 import axios, {
-  AxiosDefaults,
   AxiosError,
   AxiosInstance,
   AxiosInterceptorManager,
   AxiosRequestConfig,
   AxiosRequestHeaders,
-  AxiosResponse, AxiosResponseHeaders, Cancel,
+  AxiosResponse,
+  AxiosResponseHeaders,
+  Cancel,
   CreateAxiosDefaults,
   FormSerializerOptions,
   GenericFormData,
@@ -27,11 +28,6 @@ export type AxiosResponseTransformer<T> = (
   headers: AxiosResponseHeaders,
   status?: number
 ) => T;
-
-export interface RxjsAxiosDefaults<T = unknown> extends AxiosDefaults<T> {
-  transformRequest?: AxiosRequestTransformer<T> | AxiosRequestTransformer<T>[];
-  transformResponse?: AxiosResponseTransformer<T> | AxiosResponseTransformer<T>[];
-}
 
 interface Interceptors {
   request: AxiosInterceptorManager<AxiosRequestConfig<unknown>>;
@@ -81,7 +77,7 @@ export class RxjsAxios {
     return axios.formToJSON(form);
   }
 
-  public get defaults(): RxjsAxiosDefaults {
+  public get defaults(): CreateAxiosDefaults<unknown> {
     return this.axios.defaults;
   }
 
