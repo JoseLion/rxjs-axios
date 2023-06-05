@@ -196,7 +196,7 @@ describe("[Unit] RxjsAxios.test.ts", () => {
         axios.head("http://localhost:8080/user/1")
           .subscribe(response => {
             expect(response).toPartiallyMatch({
-              data: { ["Content-Type"]: "application/json" },
+              data: { "Content-Type": "application/json" },
               status: 200,
             });
             done();
@@ -230,7 +230,7 @@ describe("[Unit] RxjsAxios.test.ts", () => {
         axios.options("http://localhost:8080")
           .subscribe(response => {
             expect(response.headers).toPartiallyMatch({
-              "allow": "GET, HEAD, POST, OPTIONS",
+              allow: "GET, HEAD, POST, OPTIONS",
               "x-powered-by": "msw",
             });
             expect(response.status).toBeEqual(204);

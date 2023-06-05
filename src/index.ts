@@ -6,7 +6,7 @@ import { RxjsAxios } from "./lib/RxjsAxios";
 export type AxiosObservable<T> = Observable<AxiosResponse<T>>;
 
 /**
- * Re-export all everything from axios, except anything to do with promises or
+ * Re-export everything from axios, except anything to do with promises or
  * types enhencements
  */
 export {

@@ -8,7 +8,7 @@ export function observify<T, R extends AxiosResponse<T>>(
   return new Observable(subscriber => {
     makeRequest()
       .then(response => subscriber.next(response))
-      .catch(error => subscriber.error(error))
+      .catch((error: unknown) => subscriber.error(error))
       .finally(() => subscriber.complete());
 
     return { unsubscribe: () => controller.abort() };
