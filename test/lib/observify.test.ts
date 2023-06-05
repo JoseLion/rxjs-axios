@@ -8,7 +8,7 @@ import { delay } from "../helpers/async.helpers";
 const RESPONSE: AxiosResponse<string> = {
   config: { headers: AxiosHeaders.from() },
   data: "ok",
-  headers: { ["Content-Type"]: "plain/text" },
+  headers: { "Content-Type": "plain/text" },
   status: 200,
   statusText: "OK",
 };

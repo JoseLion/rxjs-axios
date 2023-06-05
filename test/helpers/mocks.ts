@@ -19,7 +19,7 @@ export const handlers = [
   rest.head("http://localhost:8080/user/1", (_req, res, ctx) => {
     return res(
       ctx.status(200),
-      ctx.json({ ["Content-Type"]: "application/json" }),
+      ctx.json({ "Content-Type": "application/json" }),
     );
   }),
   rest.options("http://localhost:8080", (_req, res, ctx) => {
