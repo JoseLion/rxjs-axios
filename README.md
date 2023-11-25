@@ -1,10 +1,12 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/JoseLion/rxjs-axios/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/JoseLion/rxjs-axios/tree/main)
-[![NPM version](https://img.shields.io/npm/v/rxjs-axios)](https://www.npmjs.com/package/rxjs-axios)
+[![CI](https://github.com/JoseLion/rxjs-axios/actions/workflows/ci.yml/badge.svg)](https://github.com/JoseLion/rxjs-axios/actions/workflows/ci.yml)
+[![Pages](https://github.com/JoseLion/rxjs-axios/actions/workflows/pages.yml/badge.svg)](https://github.com/JoseLion/rxjs-axios/actions/workflows/pages.yml)
+[![Release](https://github.com/JoseLion/rxjs-axios/actions/workflows/release.yml/badge.svg)](https://github.com/JoseLion/rxjs-axios/actions/workflows/release.yml)
+[![NPM version](https://img.shields.io/npm/v/rxjs-axios?logo=npm)](https://www.npmjs.com/package/rxjs-axios)
 [![NPM bundle size](https://img.shields.io/bundlephobia/min/rxjs-axios)](https://www.npmjs.com/package/rxjs-axios)
 [![NPM downloads](https://img.shields.io/npm/dm/rxjs-axios)](https://www.npmjs.com/package/rxjs-axios)
 [![NPM license](https://img.shields.io/npm/l/rxjs-axios)](./LICENSE)
 [![GitHub Release Date](https://img.shields.io/github/release-date/JoseLion/rxjs-axios)](https://github.com/JoseLion/rxjs-axios/releases)
-[![Snyk Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/rxjs-axios)](https://snyk.io/)
+[![Known Vulnerabilities](https://snyk.io/test/github/JoseLion/rxjs-axios/badge.svg)](https://snyk.io/test/github/JoseLion/rxjs-axios)
 
 # rxjs-axios
 A complete Axios wrapper that uses RxJS observables instead of promises. Same Axios API, but anything that used to return a `Promise<T>` will now return an `Observable<T>` instead.
