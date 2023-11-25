@@ -1,4 +1,4 @@
-import { expect } from "@stackbuilders/assertive-ts";
+import { expect } from "@assertive-ts/core";
 import { AxiosError, AxiosHeaders, AxiosResponse } from "axios";
 import Sinon from "sinon";
 

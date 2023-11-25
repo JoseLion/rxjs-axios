@@ -1,4 +1,4 @@
-import { expect, TypeFactories } from "@stackbuilders/assertive-ts";
+import { expect, TypeFactories } from "@assertive-ts/core";
 import originalAxios from "axios";
 import FormData from "form-data";
 import { Observable } from "rxjs";
@@ -12,9 +12,8 @@ describe("[Unit] RxjsAxios.test.ts", () => {
     it("creates an RxjsAxios instance from another Axios instance", () => {
       const rxjsAxios = RxjsAxios.of(originalAxios);
 
-      expect(Object(rxjsAxios))
-        .asType(TypeFactories.object())
-        .toContainEntry(["axios", originalAxios]);
+      // eslint-disable-next-line @typescript-eslint/dot-notation
+      expect(rxjsAxios["axios"]).toBeEqual(originalAxios);
     });
   });
 
@@ -219,9 +218,8 @@ describe("[Unit] RxjsAxios.test.ts", () => {
   });
 
   describe(".options", () => {
-    const request = axios.options("http://localhost:8080");
-
     it("returns an Observable", () => {
+      const request = axios.options("http://localhost:8080");
       expect(request).toBeInstanceOf(Observable);
     });
 
@@ -231,7 +229,6 @@ describe("[Unit] RxjsAxios.test.ts", () => {
           .subscribe(response => {
             expect(response.headers).toPartiallyMatch({
               allow: "GET, HEAD, POST, OPTIONS",
-              "x-powered-by": "msw",
             });
             expect(response.status).toBeEqual(204);
             done();

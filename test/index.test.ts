@@ -1,4 +1,4 @@
-import { expect } from "@stackbuilders/assertive-ts";
+import { expect } from "@assertive-ts/core";
 
 import { Axios, axios } from "../src";
 import { RxjsAxios } from "../src/lib/RxjsAxios";
