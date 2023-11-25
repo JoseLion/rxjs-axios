@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_call:
+
+concurrency:
+  group: ci-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        nodejs: [16, 17, 18, 19, 20]
+        rxjs: [5, 6, 7]
+        axios: ["1.0", 1.1, 1.2, 1.3, 1.4]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.nodejs }}
+          cache: yarn
+      - run: yarn install --immutable
+      - run: yarn add --dev rxjs@~${{ matrix.rxjs }}
+      - run: yarn add --dev axios@^${{ matrix.axios }}
+      - run: yarn compile
+      - run: yarn lint
+      - run: yarn test --forbid-only
+
+  check:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJson(needs) }}

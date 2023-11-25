@@ -34,6 +34,7 @@
     "release": "semantic-release",
     "test": "NODE_ENV=test mocha"
   },
+  "packageManager": "yarn@3.6.0",
   "devDependencies": {
     "@stackbuilders/assertive-ts": "^1.2.0",
     "@types/mocha": "^10.0.1",
@@ -53,6 +54,7 @@
     "msw": "^1.2.2",
     "rxjs": "^7.8.1",
     "semantic-release": "^21.0.7",
+    "semantic-release-yarn": "^3.0.2",
     "sinon": "^15.2.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.6.0",
@@ -70,5 +72,8 @@
       "optional": false
     }
   },
-  "packageManager": "yarn@3.6.0"
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
 }
