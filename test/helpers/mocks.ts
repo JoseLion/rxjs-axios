@@ -1,4 +1,4 @@
-import { rest } from "msw";
+import { HttpResponse, PathParams, http } from "msw";
 
 interface User {
   id?: number;
@@ -7,73 +7,67 @@ interface User {
 }
 
 export const handlers = [
-  rest.get("http://localhost:8080/users", (_req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json<User[]>([{ lastname: "Doe", name: "John" }]),
+  http.get("http://localhost:8080/users", () => {
+    return HttpResponse.json<User[]>(
+      [{ lastname: "Doe", name: "John" }],
+      { status: 200 },
     );
   }),
-  rest.delete("http://localhost:8080/user/1", (_req, res, ctx) => {
-    return res(ctx.status(204));
+  http.delete("http://localhost:8080/user/1", () => {
+    return new HttpResponse(null, { status: 204 });
   }),
-  rest.head("http://localhost:8080/user/1", (_req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({ "Content-Type": "application/json" }),
+  http.head("http://localhost:8080/user/1", () => {
+    return HttpResponse.json(
+      { "Content-Type": "application/json" },
+      { status: 200 },
     );
   }),
-  rest.options("http://localhost:8080", (_req, res, ctx) => {
-    return res(
-      ctx.status(204),
-      ctx.set("Allow", "GET, HEAD, POST, OPTIONS"),
+  http.options("http://localhost:8080", () => {
+    return new HttpResponse(
+      null,
+      {
+        headers: { Allow: "GET, HEAD, POST, OPTIONS" },
+        status: 204,
+      },
     );
   }),
-  rest.post("http://localhost:8080/users", async (req, res, ctx) => {
-    const body = await req.json<User>();
+  http.post<PathParams, User>("http://localhost:8080/users", async ({ request }) => {
+    const body = await request.json();
 
-    return res(
-      ctx.status(200),
-      ctx.json<User>({ id: 2, ...body }),
+    return HttpResponse.json<User>(
+      { id: 2, ...body },
+      { status: 200 },
     );
   }),
-  rest.put("http://localhost:8080/user/2", async (req, res, ctx) => {
-    const body = await req.json<User>();
+  http.put<PathParams, User>("http://localhost:8080/user/2", async ({ request }) => {
+    const body = await request.json();
 
-    return res(
-      ctx.status(200),
-      ctx.json<User>({ id: 2, ...body }),
+    return HttpResponse.json<User>(
+      { id: 2, ...body },
+      { status: 200 },
     );
   }),
-  rest.patch("http://localhost:8080/user/1", async (req, res, ctx) => {
-    const body = await req.json<Partial<User>>();
+  http.patch<PathParams, Partial<User>>("http://localhost:8080/user/1", async ({ request }) => {
+    const body = await request.json();
 
-    return res(
-      ctx.status(200),
-      ctx.json<User>({ id: 1, lastname: "Doe", name: "John", ...body }),
+    return HttpResponse.json<User>(
+      { id: 1, lastname: "Doe", name: "John", ...body },
+      { status: 200 },
     );
   }),
-  rest.post("http://localhost:8080/form", async (req, res, ctx) => {
-    const body = await req.text();
+  http.post("http://localhost:8080/form", async ({ request }) => {
+    const body = await request.text();
 
-    return res(
-      ctx.status(200),
-      ctx.text(body),
-    );
+    return HttpResponse.text(body, { status: 200 });
   }),
-  rest.put("http://localhost:8080/form", async (req, res, ctx) => {
-    const body = await req.text();
+  http.put("http://localhost:8080/form", async ({ request }) => {
+    const body = await request.text();
 
-    return res(
-      ctx.status(200),
-      ctx.text(body),
-    );
+    return HttpResponse.text(body, { status: 200 });
   }),
-  rest.patch("http://localhost:8080/form", async (req, res, ctx) => {
-    const body = await req.text();
+  http.patch("http://localhost:8080/form", async ({ request }) => {
+    const body = await request.text();
 
-    return res(
-      ctx.status(200),
-      ctx.text(body),
-    );
+    return HttpResponse.text(body, { status: 200 });
   }),
 ];
