@@ -5,7 +5,7 @@
 [![NPM version](https://img.shields.io/npm/v/rxjs-axios?logo=npm)](https://www.npmjs.com/package/rxjs-axios)
 [![NPM bundle size](https://img.shields.io/bundlephobia/min/rxjs-axios)](https://www.npmjs.com/package/rxjs-axios)
 [![NPM downloads](https://img.shields.io/npm/dm/rxjs-axios)](https://www.npmjs.com/package/rxjs-axios)
-[![NPM license](https://img.shields.io/npm/l/rxjs-axios)](./LICENSE)
+[![NPM license](https://img.shields.io/npm/l/rxjs-axios)](https://github.com/JoseLion/rxjs-axios/blob/main/LICENSE)
 [![GitHub Release Date](https://img.shields.io/github/release-date/JoseLion/rxjs-axios)](https://github.com/JoseLion/rxjs-axios/releases)
 [![Known Vulnerabilities](https://snyk.io/test/github/JoseLion/rxjs-axios/badge.svg)](https://snyk.io/test/github/JoseLion/rxjs-axios)
 
@@ -109,4 +109,4 @@ Contributions are very welcome! To do so, please fork this repository and open a
 
 ## License
 
-[MIT License](./LICENSE)
+[MIT License](https://github.com/JoseLion/rxjs-axios/blob/main/LICENSE)
