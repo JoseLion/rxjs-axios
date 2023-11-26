@@ -1,4 +1,5 @@
 [![CI](https://github.com/JoseLion/rxjs-axios/actions/workflows/ci.yml/badge.svg)](https://github.com/JoseLion/rxjs-axios/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/JoseLion/rxjs-axios/actions/workflows/codeql.yml/badge.svg)](https://github.com/JoseLion/rxjs-axios/actions/workflows/codeql.yml)
 [![Pages](https://github.com/JoseLion/rxjs-axios/actions/workflows/pages.yml/badge.svg)](https://github.com/JoseLion/rxjs-axios/actions/workflows/pages.yml)
 [![Release](https://github.com/JoseLion/rxjs-axios/actions/workflows/release.yml/badge.svg)](https://github.com/JoseLion/rxjs-axios/actions/workflows/release.yml)
 [![NPM version](https://img.shields.io/npm/v/rxjs-axios?logo=npm)](https://www.npmjs.com/package/rxjs-axios)
