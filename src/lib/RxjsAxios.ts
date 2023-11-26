@@ -4,7 +4,7 @@ import axios, {
   AxiosInterceptorManager,
   AxiosRequestConfig,
   AxiosRequestHeaders,
-  AxiosResponse,
+  AxiosResponse as OriginalAxiosResponse,
   AxiosResponseHeaders,
   Cancel,
   CreateAxiosDefaults,
@@ -15,6 +15,10 @@ import axios, {
 import { Observable } from "rxjs";
 
 import { observify } from "./observify";
+
+export type AxiosResponse<T, D = unknown> = OriginalAxiosResponse<T, D>;
+
+export type AxiosObservable<T> = Observable<AxiosResponse<T>>;
 
 export type AxiosRequestTransformer<T> = (
   this: AxiosRequestConfig<T>,

@@ -1,5 +1,6 @@
-import { AxiosResponse } from "axios";
 import { Observable } from "rxjs";
+
+import type { AxiosResponse } from "./RxjsAxios";
 
 export function observify<T, R extends AxiosResponse<T>>(
   makeRequest: () => Promise<R>,

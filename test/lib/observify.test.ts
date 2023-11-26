@@ -1,7 +1,8 @@
 import { expect } from "@assertive-ts/core";
-import { AxiosError, AxiosHeaders, AxiosResponse } from "axios";
+import { AxiosError, AxiosHeaders } from "axios";
 import Sinon from "sinon";
 
+import { AxiosResponse } from "../../src/lib/RxjsAxios";
 import { observify } from "../../src/lib/observify";
 import { delay } from "../helpers/async.helpers";
 
@@ -23,7 +24,7 @@ describe("[Unit] observify.test.ts", () => {
       context("and the observable is not unsubscribed", () => {
         it("sets the axios response on the next value and completes the observable", done => {
           const observable = observify(
-            () => Promise.resolve<AxiosResponse>(RESPONSE),
+            () => Promise.resolve<AxiosResponse<unknown>>(RESPONSE),
             controller,
           );
 
