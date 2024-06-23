@@ -5,9 +5,10 @@ import { Observable } from "rxjs";
 import { delay, map, repeat } from "rxjs/operators";
 import Sinon from "sinon";
 
-import { axios } from "../../src";
 import { RxjsAxios } from "../../src/lib/RxjsAxios";
-import { User } from "../helpers/mocks";
+import { axios } from "../../src/main";
+
+import type { User } from "../helpers/mocks";
 
 describe("[Unit] RxjsAxios.test.ts", () => {
   describe(".of", () => {

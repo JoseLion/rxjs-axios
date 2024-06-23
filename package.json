@@ -17,17 +17,32 @@
     "rxjs",
     "rxjs-observable"
   ],
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "type": "module",
+  "source": "./src/main.ts",
+  "main": "./dist/main.cjs",
+  "module": "./dist/main.js",
+  "unpkg": "./dist/main.umd.cjs",
+  "types": "./dist/main.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/main.js",
+      "require": "./dist/main.cjs",
+      "types": "./dist/main.d.ts",
+      "default": "./dist/main.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
-    "dist/",
-    "src/"
+    "./dist",
+    "./src",
+    "./package.json"
   ],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.prod.json",
+    "build": "vite build",
     "check": "yarn compile && yarn lint && yarn test --forbid-only",
     "compile": "tsc",
     "lint": "eslint .",
@@ -35,6 +50,9 @@
     "test": "NODE_ENV=test mocha"
   },
   "packageManager": "yarn@4.3.1",
+  "dependencies": {
+    "pino": "^9.2.0"
+  },
   "devDependencies": {
     "@assertive-ts/core": "^2.1.0",
     "@assertive-ts/sinon": "^1.0.0",
@@ -66,7 +84,9 @@
     "ts-node": "^10.9.2",
     "tslib": "^2.6.3",
     "typescript": "^5.5.2",
-    "typescript-eslint": "^7.13.1"
+    "typescript-eslint": "^7.13.1",
+    "vite": "^5.3.1",
+    "vite-plugin-dts": "^3.9.1"
   },
   "peerDependencies": {
     "axios": ">=1.0.0",
@@ -83,8 +103,5 @@
   "publishConfig": {
     "access": "public",
     "provenance": true
-  },
-  "dependencies": {
-    "pino": "^9.2.0"
   }
 }

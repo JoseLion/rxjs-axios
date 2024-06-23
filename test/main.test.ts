@@ -1,7 +1,7 @@
 import { expect } from "@assertive-ts/core";
 
-import { Axios, axios } from "../src";
 import { RxjsAxios } from "../src/lib/RxjsAxios";
+import { Axios, axios } from "../src/main";
 
 describe("[Unit] index.test.ts", () => {
   context("the default instance is imported", () => {

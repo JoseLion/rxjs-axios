@@ -2,9 +2,10 @@ import { expect } from "@assertive-ts/core";
 import { AxiosError, AxiosHeaders } from "axios";
 import Sinon from "sinon";
 
-import { AxiosResponse } from "../../src/lib/RxjsAxios";
 import { observify } from "../../src/lib/observify";
 import { delay } from "../helpers/async.helpers";
+
+import type { AxiosResponse } from "../../src/lib/RxjsAxios";
 
 const RESPONSE: AxiosResponse<string> = {
   config: { headers: AxiosHeaders.from() },

@@ -1,4 +1,4 @@
-import { HttpResponse, PathParams, http } from "msw";
+import { HttpResponse, type PathParams, http } from "msw";
 
 export interface User {
   id?: number;
