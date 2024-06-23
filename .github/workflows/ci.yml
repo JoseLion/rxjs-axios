@@ -28,7 +28,7 @@ jobs:
       - run: yarn add --dev rxjs@~${{ matrix.rxjs }}
       - run: yarn compile
       - run: yarn lint
-      - run: yarn test --forbid-only
+      - run: yarn test
 
   check:
     runs-on: ubuntu-latest

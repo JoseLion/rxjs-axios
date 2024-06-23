@@ -1,21 +1,22 @@
 import axios, {
-  AxiosError,
-  AxiosInstance,
-  AxiosInterceptorManager,
-  AxiosRequestConfig,
-  AxiosRequestHeaders,
-  AxiosResponseHeaders,
-  Cancel,
-  CreateAxiosDefaults,
-  FormSerializerOptions,
-  GenericFormData,
-  GenericHTMLFormElement,
-  AxiosResponse as OriginalAxiosResponse,
+  type AxiosError,
+  type AxiosInstance,
+  type AxiosInterceptorManager,
+  type AxiosRequestConfig,
+  type AxiosRequestHeaders,
+  type AxiosResponseHeaders,
+  type Cancel,
+  type CreateAxiosDefaults,
+  type FormSerializerOptions,
+  type GenericFormData,
+  type GenericHTMLFormElement,
+  type AxiosResponse as OriginalAxiosResponse,
 } from "axios";
 import pino from "pino";
-import { Observable } from "rxjs";
 
 import { observify } from "./observify";
+
+import type { Observable } from "rxjs";
 
 export type AxiosResponse<T, D = unknown> = OriginalAxiosResponse<T, D>;
 
