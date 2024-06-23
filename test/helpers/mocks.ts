@@ -1,6 +1,6 @@
 import { HttpResponse, PathParams, http } from "msw";
 
-interface User {
+export interface User {
   id?: number;
   lastname: string;
   name: string;

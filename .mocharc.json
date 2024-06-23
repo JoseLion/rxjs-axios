@@ -4,7 +4,8 @@
   "recursive": true,
   "require": [
     "ts-node/register",
-    "test/hooks.ts"
+    "./test/hooks.ts",
+    "./test/setup.ts"
   ],
   "spec": [
     "test/**/*.test.*"

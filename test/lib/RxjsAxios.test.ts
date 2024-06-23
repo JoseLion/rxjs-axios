@@ -2,10 +2,12 @@ import { TypeFactories, expect } from "@assertive-ts/core";
 import originalAxios from "axios";
 import FormData from "form-data";
 import { Observable } from "rxjs";
+import { delay, map, repeat } from "rxjs/operators";
 import Sinon from "sinon";
 
 import { axios } from "../../src";
 import { RxjsAxios } from "../../src/lib/RxjsAxios";
+import { User } from "../helpers/mocks";
 
 describe("[Unit] RxjsAxios.test.ts", () => {
   describe(".of", () => {
@@ -148,6 +150,27 @@ describe("[Unit] RxjsAxios.test.ts", () => {
 
         subscription.unsubscribe();
         done();
+      });
+    });
+
+    context("when the data is fetched repeatedly", () => {
+      it("returns the data on each rquest", done => {
+        const ref = { count: 0 };
+
+        axios.get<User[]>("http://localhost:8080/users")
+          .pipe(
+            map(({ data }) => data),
+            delay(10),
+            repeat(3),
+          )
+          .subscribe(users => {
+            ref.count++;
+            expect(users).not.toBeEmpty();
+
+            if (ref.count >= 3) {
+              done();
+            }
+          });
       });
     });
   });

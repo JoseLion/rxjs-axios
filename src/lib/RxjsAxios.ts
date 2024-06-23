@@ -39,11 +39,6 @@ interface Interceptors {
   response: AxiosInterceptorManager<AxiosResponse<unknown>>;
 }
 
-interface Abortable {
-  controller: AbortController;
-  signal: AbortSignal;
-}
-
 const logger = pino({ browser: { asObject: false } });
 
 export class RxjsAxios {
@@ -95,12 +90,8 @@ export class RxjsAxios {
     config: AxiosRequestConfig<D>,
   ): Observable<R> {
     const reqConfig = this.validateConfig(config);
-    const { controller, signal } = this.makeCancellable();
 
-    return observify(
-      () => this.axios.request<T, R, D>({ ...reqConfig, signal }),
-      controller,
-    );
+    return observify(signal => this.axios.request<T, R, D>({ ...reqConfig, signal }));
   }
 
   public get<T, R extends AxiosResponse<T> = AxiosResponse<T>, D = unknown>(
@@ -108,12 +99,8 @@ export class RxjsAxios {
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
     const reqConfig = this.validateConfig(config);
-    const { controller, signal } = this.makeCancellable();
 
-    return observify(
-      () => this.axios.get<T, R, D>(url, { ...reqConfig, signal }),
-      controller,
-    );
+    return observify(signal => this.axios.get<T, R, D>(url, { ...reqConfig, signal }));
   }
 
   public delete<T, R extends AxiosResponse<T> = AxiosResponse<T>, D = unknown>(
@@ -121,12 +108,8 @@ export class RxjsAxios {
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
     const reqConfig = this.validateConfig(config);
-    const { controller, signal } = this.makeCancellable();
 
-    return observify(
-      () => this.axios.delete<T, R, D>(url, { ...reqConfig, signal }),
-      controller,
-    );
+    return observify(signal => this.axios.delete<T, R, D>(url, { ...reqConfig, signal }));
   }
 
   public head<T, R extends AxiosResponse<T> = AxiosResponse<T>, D = unknown>(
@@ -134,12 +117,8 @@ export class RxjsAxios {
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
     const reqConfig = this.validateConfig(config);
-    const { controller, signal } = this.makeCancellable();
 
-    return observify(
-      () => this.axios.head<T, R, D>(url, { ...reqConfig, signal }),
-      controller,
-    );
+    return observify(signal => this.axios.head<T, R, D>(url, { ...reqConfig, signal }));
   }
 
   public options<T, R extends AxiosResponse<T> = AxiosResponse<T>, D = unknown>(
@@ -147,12 +126,8 @@ export class RxjsAxios {
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
     const reqConfig = this.validateConfig(config);
-    const { controller, signal } = this.makeCancellable();
 
-    return observify(
-      () => this.axios.options<T, R, D>(url, { ...reqConfig, signal }),
-      controller,
-    );
+    return observify(signal => this.axios.options<T, R, D>(url, { ...reqConfig, signal }));
   }
 
   public post<T, R extends AxiosResponse<T> = AxiosResponse<T>, D = unknown>(
@@ -161,12 +136,8 @@ export class RxjsAxios {
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
     const reqConfig = this.validateConfig(config);
-    const { controller, signal } = this.makeCancellable();
 
-    return observify(
-      () => this.axios.post<T, R, D>(url, data, { ...reqConfig, signal }),
-      controller,
-    );
+    return observify(signal => this.axios.post<T, R, D>(url, data, { ...reqConfig, signal }));
   }
 
   public put<T, R extends AxiosResponse<T> = AxiosResponse<T>, D = unknown>(
@@ -175,12 +146,8 @@ export class RxjsAxios {
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
     const reqConfig = this.validateConfig(config);
-    const { controller, signal } = this.makeCancellable();
 
-    return observify(
-      () => this.axios.put<T, R, D>(url, data, { ...reqConfig, signal }),
-      controller,
-    );
+    return observify(signal => this.axios.put<T, R, D>(url, data, { ...reqConfig, signal }));
   }
 
   public patch<T, R extends AxiosResponse<T> = AxiosResponse<T>, D = unknown>(
@@ -189,12 +156,8 @@ export class RxjsAxios {
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
     const reqConfig = this.validateConfig(config);
-    const { controller, signal } = this.makeCancellable();
 
-    return observify(
-      () => this.axios.patch<T, R, D>(url, data, { ...reqConfig, signal }),
-      controller,
-    );
+    return observify(signal => this.axios.patch<T, R, D>(url, data, { ...reqConfig, signal }));
   }
 
   public postForm<T, R extends AxiosResponse<T> = AxiosResponse<T>, D = unknown>(
@@ -203,12 +166,8 @@ export class RxjsAxios {
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
     const reqConfig = this.validateConfig(config);
-    const { controller, signal } = this.makeCancellable();
 
-    return observify(
-      () => this.axios.postForm<T, R, D>(url, data, { ...reqConfig, signal }),
-      controller,
-    );
+    return observify(signal => this.axios.postForm<T, R, D>(url, data, { ...reqConfig, signal }));
   }
 
   public putForm<T, R extends AxiosResponse<T> = AxiosResponse<T>, D = unknown>(
@@ -217,12 +176,8 @@ export class RxjsAxios {
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
     const reqConfig = this.validateConfig(config);
-    const { controller, signal } = this.makeCancellable();
 
-    return observify(
-      () => this.axios.putForm<T, R, D>(url, data, { ...reqConfig, signal }),
-      controller,
-    );
+    return observify(signal => this.axios.putForm<T, R, D>(url, data, { ...reqConfig, signal }));
   }
 
   public patchForm<T, R extends AxiosResponse<T> = AxiosResponse<T>, D = unknown>(
@@ -231,12 +186,8 @@ export class RxjsAxios {
     config?: AxiosRequestConfig<D>,
   ): Observable<R> {
     const reqConfig = this.validateConfig(config);
-    const { controller, signal } = this.makeCancellable();
 
-    return observify(
-      () => this.axios.patchForm<T, R, D>(url, data, { ...reqConfig, signal }),
-      controller,
-    );
+    return observify(signal => this.axios.patchForm<T, R, D>(url, data, { ...reqConfig, signal }));
   }
 
   private validateConfig<D>(config?: AxiosRequestConfig<D>): AxiosRequestConfig<D> | undefined {
@@ -256,15 +207,5 @@ export class RxjsAxios {
     }
 
     return config;
-  }
-
-  private makeCancellable(): Abortable {
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    return {
-      controller,
-      signal,
-    };
   }
 }
