@@ -4,14 +4,15 @@ import axios, {
   AxiosInterceptorManager,
   AxiosRequestConfig,
   AxiosRequestHeaders,
-  AxiosResponse as OriginalAxiosResponse,
   AxiosResponseHeaders,
   Cancel,
   CreateAxiosDefaults,
   FormSerializerOptions,
   GenericFormData,
   GenericHTMLFormElement,
+  AxiosResponse as OriginalAxiosResponse,
 } from "axios";
+import pino from "pino";
 import { Observable } from "rxjs";
 
 import { observify } from "./observify";
@@ -43,8 +44,9 @@ interface Abortable {
   signal: AbortSignal;
 }
 
-export class RxjsAxios {
+const logger = pino({ browser: { asObject: false } });
 
+export class RxjsAxios {
   private axios: AxiosInstance;
 
   private constructor(instance: AxiosInstance) {
@@ -243,11 +245,11 @@ export class RxjsAxios {
       const { cancelToken, signal, ...rest } = config;
 
       if (cancelToken !== undefined) {
-        console.warn(`Use of "cancelToken" is deprecated by Axios and has no effect on rxjs-axios. ${insteadMsg}`);
+        logger.warn(`Use of "cancelToken" is deprecated by Axios and has no effect on rxjs-axios. ${insteadMsg}`);
       }
 
       if (signal !== undefined) {
-        console.warn(`Use of "signal" has no effect on rxjs-axios. ${insteadMsg}`);
+        logger.warn(`Use of "signal" has no effect on rxjs-axios. ${insteadMsg}`);
       }
 
       return rest;
