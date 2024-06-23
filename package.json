@@ -43,11 +43,11 @@
   },
   "scripts": {
     "build": "vite build",
-    "check": "yarn compile && yarn lint && yarn test --forbid-only",
+    "check": "yarn compile && yarn lint && yarn test --run",
     "compile": "tsc",
     "lint": "eslint .",
     "release": "semantic-release",
-    "test": "NODE_ENV=test mocha"
+    "test": "NODE_ENV=test vitest"
   },
   "packageManager": "yarn@4.3.1",
   "dependencies": {
@@ -62,7 +62,6 @@
     "@stylistic/eslint-plugin": "^2.2.2",
     "@types/eslint__eslintrc": "^2.1.1",
     "@types/eslint__js": "^8.42.3",
-    "@types/mocha": "^10.0.7",
     "@types/node": "^20.14.8",
     "@types/sinon": "^17.0.3",
     "axios": "^1.7.2",
@@ -75,7 +74,6 @@
     "eslint-plugin-jsdoc": "^48.2.15",
     "eslint-plugin-sonarjs": "^1.0.3",
     "form-data": "^4.0.0",
-    "mocha": "^10.4.0",
     "msw": "^2.3.1",
     "rxjs": "^7.8.1",
     "semantic-release": "^24.0.0",
@@ -86,7 +84,8 @@
     "typescript": "^5.5.2",
     "typescript-eslint": "^7.13.1",
     "vite": "^5.3.1",
-    "vite-plugin-dts": "^3.9.1"
+    "vite-plugin-dts": "^3.9.1",
+    "vitest": "^1.6.0"
   },
   "peerDependencies": {
     "axios": ">=1.0.0",
