@@ -1,4 +1,4 @@
-import { expect, TypeFactories } from "@assertive-ts/core";
+import { TypeFactories, expect } from "@assertive-ts/core";
 import originalAxios from "axios";
 import FormData from "form-data";
 import { Observable } from "rxjs";
