@@ -16,17 +16,12 @@ const RESPONSE: AxiosResponse<string> = {
 
 const REQUEST_ERROR = new AxiosError("Something went wrong", "Bad Request");
 
-const controller = new AbortController();
-
 describe("[Unit] observify.test.ts", () => {
   describe(".observify", () => {
     context("when the request promise is resolved", () => {
       context("and the observable is not unsubscribed", () => {
         it("sets the axios response on the next value and completes the observable", done => {
-          const observable = observify(
-            () => Promise.resolve<AxiosResponse<unknown>>(RESPONSE),
-            controller,
-          );
+          const observable = observify(() => Promise.resolve<AxiosResponse<unknown>>(RESPONSE));
 
           observable.subscribe({
             complete: done,
@@ -38,11 +33,11 @@ describe("[Unit] observify.test.ts", () => {
 
       context("and the observable is unsubscribed", () => {
         it("does not set the next value and cancels the request", done => {
-          const abort = Sinon.spy(controller, "abort");
-          const observable = observify(
-            () => delay(10).then(() => RESPONSE),
-            controller,
-          );
+          const spy = Sinon.spy();
+          const observable = observify(signal => {
+            signal.addEventListener("abort", spy);
+            return delay(10).then(() => RESPONSE);
+          });
 
           const subscription = observable.subscribe({
             complete: done,
@@ -50,12 +45,11 @@ describe("[Unit] observify.test.ts", () => {
             next: response => expect(response).not.toBePresent(),
           });
 
+          expect(spy).toNeverBeCalled();
           subscription.unsubscribe();
 
-          delay(20)
-            .then(() => Sinon.assert.calledOnce(abort))
-            .then(done)
-            .catch(done);
+          expect(spy).toBeCalledOnce();
+          done();
         });
       });
     });
@@ -63,10 +57,7 @@ describe("[Unit] observify.test.ts", () => {
     context("when the request promise is rejected", () => {
       context("and the observable is not unsubscribed", () => {
         it("sets the axios error on the error value and completes the observable", done => {
-          const observable = observify(
-            () => Promise.reject(REQUEST_ERROR),
-            controller,
-          );
+          const observable = observify(() => Promise.reject(REQUEST_ERROR));
 
           observable.subscribe({
             complete: done,
@@ -81,11 +72,11 @@ describe("[Unit] observify.test.ts", () => {
 
       context("and the observable is unsubscribed", () => {
         it("does not set the error value and cancels the request", done => {
-          const abort = Sinon.spy(controller, "abort");
-          const observable = observify(
-            () => delay(10).then(() => Promise.reject(REQUEST_ERROR)),
-            controller,
-          );
+          const spy = Sinon.spy();
+          const observable = observify(signal => {
+            signal.addEventListener("abort", spy);
+            return delay(10).then(() => Promise.reject(REQUEST_ERROR));
+          });
 
           const subscription = observable.subscribe({
             complete: done,
@@ -93,12 +84,11 @@ describe("[Unit] observify.test.ts", () => {
             next: response => expect(response).not.toBePresent(),
           });
 
+          expect(spy).toNeverBeCalled();
           subscription.unsubscribe();
 
-          delay(20)
-            .then(() => Sinon.assert.calledOnce(abort))
-            .then(done)
-            .catch(done);
+          expect(spy).toBeCalledOnce();
+          done();
         });
       });
     });
